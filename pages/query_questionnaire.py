@@ -7,7 +7,7 @@ from streamlit_extras.switch_page_button import switch_page
 def construct_freesound_url(sound_id: str, user_id: str|int):
     prefix = sound_id[:len(sound_id) - 3]
     quality = "hq"
-    return f"https://cdn.freesound.org/previews/{prefix}/{sound_id}_{user_id}-{quality}.ogg"
+    return f"https://cdn.freesound.org/previews/{prefix}/{sound_id}_{user_id}-{quality}.mp3"
 
 
 def toggle_session_state(key: str):
@@ -51,7 +51,7 @@ if "sound_url" not in st.session_state:
     s_id, user_id = sounds[random.randint(0, len(sounds) - 1)]
     st.session_state["sound_url"] = construct_freesound_url(str(s_id), str(user_id))
 
-st.audio(st.session_state["sound_url"], format="audio/ogg", start_time=0)
+st.audio(st.session_state["sound_url"], format="audio/mp3", start_time=0)
 
 st.subheader("How would you search for this sound?", anchor=False)
 

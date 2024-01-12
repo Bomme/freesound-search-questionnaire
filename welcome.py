@@ -1,7 +1,7 @@
 import uuid
 
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
+
 
 if "user_id" not in st.session_state:
     st.session_state["user_id"] = str(uuid.uuid4())
@@ -64,4 +64,4 @@ agreed = col3.button(
     type="primary",
 )
 if agreed:
-    switch_page("questionnaire")
+    st.switch_page("pages/questionnaire.py")

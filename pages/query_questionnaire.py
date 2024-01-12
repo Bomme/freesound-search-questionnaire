@@ -1,7 +1,6 @@
 import random
 
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
 
 
 def construct_freesound_url(sound_id: str, user_id: str|int):
@@ -23,7 +22,7 @@ def clear_session_state():
 
 
 if "user_id" not in st.session_state:
-    switch_page("welcome")
+    st.switch_page("welcome.py")
 
 sounds = [
     (22041, 117199),
@@ -83,13 +82,14 @@ with st.expander(
 
 with st.form("query_form", clear_on_submit=True, border=False):
     query = st.text_input("Please type your query here", disabled=query_submitted)
-    st.form_submit_button("Submit", on_click=toggle_session_state, args=["query_submitted"], disabled=query_submitted, type="primary")
-    skipped = st.form_submit_button("Skip", on_click=switch_page, args=["query_questionnaire"], disabled=query_submitted)
+    st.form_submit_button("Submit", on_click=toggle_session_state, args=["query_submitted"], disabled=query_submitted,
+                          type="primary")
+    skipped = st.form_submit_button("Skip", on_click=st.switch_page, args=["pages/query_questionnaire.py"],
+                                    disabled=query_submitted)
 
 if skipped:
     del st.session_state["sound_url"]
     st.rerun()
-
 
 if query and query_submitted:
     st.write(f"Your query: {query}")

@@ -6,17 +6,20 @@ import streamlit as st
 if "user_id" not in st.session_state:
     st.session_state["user_id"] = str(uuid.uuid4())
 
-st.set_page_config(page_title="Freesound search questionnaire", page_icon=":question:",
-                   initial_sidebar_state="collapsed")
+st.set_page_config(
+    page_title="Sound search questionnaire",
+    page_icon=":question:",
+    initial_sidebar_state="collapsed",
+)
 
-st.title("Freesound search questionnaire", anchor=False)
+st.title("Sound search questionnaire", anchor=False)
+
 
 st.markdown(
     """This questionnaire is part of a research project conducted by the [MTG](https://www.upf.edu/web/mtg) at 
     [Universitat Pompeu Fabra](https://www.upf.edu) in Barcelona, Spain.
     The goal of this project is to understand how people search for sounds in Freesound.
-    The questionnaire is anonymous and the data collected will be used for research purposes only.
-    If you have any questions, please contact [📧 Benno Weck](mailto:benno.weck01@estudiant.upf.edu)"""
+    The questionnaire is anonymous and the data collected will be used for research purposes only."""
 )
 
 intro = """
@@ -25,43 +28,48 @@ intro = """
    🎵 You will be asked to listen to some sounds and write a description for it.
 
    ✍️ By contributing to this questionnaire, you are helping us to understand how people would like to search for sounds
-   in the future and how we can improve Freesound. We really appreciate your help!
+   in the future. This will enable us to develop better sound search tools. We really appreciate your help!
 
    ℹ️ We will only collect data you provide by submitting your answers and no other 
    personal information.
+   
+   Please read the following Participant Information Sheet and Informed Consent Form carefully before proceeding.
    """
 
 informed_consent = """
-   ___ 
-   📋 This survey is part of a research project being undertaken by Universitat Pompeu Fabra (the “Research Team”).
-   By participating in this survey, you acknowledge and agree to the following:
-
-   * You must be aged 18 or over
-   * You are participating in an academic study, the results of which may or may not be published in an academic journal. 
-   * Your participation is voluntary and you are free to leave at any time.
-   * All intellectual property rights which may arise or inure to you as a result of your participation in this survey are hereby assigned jointly, in full and in equal proportion to the members of the Research Team.
-   * By participating in this study, you agree to waive any moral rights of authorship that you may have in the responses that you provide in the survey to the extent permitted by law.
-   * The data collected by this survey is intended to be published and shall be freely available to all. The responses submitted by you shall not be attributable to you and your participation in the survey shall remain confidential.
-
+    I HEREBY CONFIRM that:
+    * I have read the information sheet regarding the research project,
+    * I have been able to formulate questions on the project,
+    * I have received enough information on the project,
+    * I fulfill the inclusion criteria, and I am above 14 years old.
+    
+    I UNDERSTAND that my participation is voluntary and that I can withdraw from or opt out
+    of the study at any time without any need to justify my decision.
    """
+
+with open("information_sheet.md", "r") as f:
+    information_sheet = f.read()
 
 st.write(intro)
 
-st.write(informed_consent)
+with st.expander("Show/hide Participant Information Sheet", expanded=True):
+    st.header("Participant Information Sheet", anchor=False)
+    st.markdown(information_sheet)
 
-_, col3, _ = st.columns([2, 1, 2])
-# col3.link_button(
-#     "Get started",
-#     "http://localhost:8501/questionnaire",
-#     help="By clicking here, you confirm that you agree with the statements above.",
-#     type="primary",
-# )
+st.header("Informed Consent Form", anchor=False)
+st.markdown(informed_consent)
 
-agreed = col3.button(
-    "Get started",
-    # on_click=partial(switch_page, "questionnaire"),
-    help="By clicking here, you confirm that you agree with the statements above.",
-    type="primary",
+agreed = st.checkbox("I GIVE MY CONSENT to participate in this study.", value=False)
+st.caption(
+    "Please check the box to confirm that you agree with the statements above or close this page if you do not agree."
 )
-if agreed:
-    st.switch_page("pages/questionnaire.py")
+_, col3, _ = st.columns([2, 1, 2])
+
+proceed = col3.button(
+    "Get started",
+    type="primary",
+    disabled=not agreed,
+    help="Check the box to confirm that you agree with the statements above.",
+)
+if agreed and proceed:
+    st.switch_page("pages/instructions.py")

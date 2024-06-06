@@ -18,20 +18,18 @@ st.title("Sound search questionnaire", anchor=False)
 st.markdown(
     """This questionnaire is part of a research project conducted by the [MTG](https://www.upf.edu/web/mtg) at 
     [Universitat Pompeu Fabra](https://www.upf.edu) in Barcelona, Spain.
-    The goal of this project is to understand how people search for sounds in Freesound.
     The questionnaire is anonymous and the data collected will be used for research purposes only."""
 )
 
 intro = """
    ###
 
-   🎵 You will be asked to listen to some sounds and write a description for it.
+   🎵 You will be asked to perform an imaginative tasks and answer questions about how you search for sounds.
 
    ✍️ By contributing to this questionnaire, you are helping us to understand how people would like to search for sounds
    in the future. This will enable us to develop better sound search tools. We really appreciate your help!
 
-   ℹ️ We will only collect data you provide by submitting your answers and no other 
-   personal information.
+   ℹ️ We will only collect data you provide by submitting your answers and no other personal information.
    
    Please read the following Participant Information Sheet and Informed Consent Form carefully before proceeding.
    """
@@ -72,4 +70,4 @@ proceed = col3.button(
     help="Check the box to confirm that you agree with the statements above.",
 )
 if agreed and proceed:
-    st.switch_page("pages/instructions.py")
+    st.switch_page("pages/screening.py")

@@ -1,1 +1,9 @@
 streamlit>=1.30.0
+git+https://github.com/MTG/freesound-python
+requests-ratelimiter
+tqdm
+requests
+pandas
+numpy
+sqlmodel
+psycopg2-binary

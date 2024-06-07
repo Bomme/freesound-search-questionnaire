@@ -1,7 +1,8 @@
 import streamlit as st
 
-if "user_id" not in st.session_state:
-    st.switch_page("welcome.py")
+from pages.utils import page_setup
+
+page_setup()
 
 # st.title("Freesound search questionnaire", anchor=False)
 st.title("Thank you for participating!", anchor=False)

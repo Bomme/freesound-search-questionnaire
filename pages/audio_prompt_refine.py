@@ -2,9 +2,9 @@ import streamlit as st
 
 from backend.data_loading import get_sounds_from_same_class
 from pages.shared_survey import aspects_form
-from pages.utils import assert_user_id, toggle_session_state
+from pages.utils import page_setup, toggle_session_state
 
-assert_user_id()
+page_setup()
 st.title("Refine your query", anchor=False)
 
 if "audio_result_id" not in st.session_state:

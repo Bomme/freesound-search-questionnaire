@@ -1,8 +1,8 @@
 import streamlit as st
 
-from pages.utils import assert_user_id
+from pages.utils import page_setup
 
-assert_user_id()
+page_setup()
 st.title("Sound search questionnaire", anchor=False)
 
 st.header("Comments", anchor=False)

@@ -2,10 +2,10 @@ from random import choice
 
 import streamlit as st
 
-from backend.database import add_annotation
-from pages.utils import assert_user_id
+from backend.database import add_annotation, num_annotations_for_participant
+from pages.utils import page_setup
 
-assert_user_id()
+page_setup()
 
 
 def store_results_and_clear_session_state():
@@ -16,7 +16,6 @@ def store_results_and_clear_session_state():
         aspects_refined = {}
     else:
         aspects_refined = st.session_state.get("aspects_refine")
-    # TODO: cover all stimuli types
     if st.session_state.get("query2_skipped"):
         st.session_state["refined_query"] = """<<SKIPPED>>"""
     add_annotation(
@@ -51,7 +50,7 @@ def store_results_and_clear_session_state():
         if key in st.session_state:
             del st.session_state[key]
     # if "counter_incremented" not in st.session_state:
-    st.session_state["num_items_completed"] += 1
+
     # st.session_state["counter_incremented"] = True
 
 
@@ -61,15 +60,14 @@ def set_next_task():
     st.session_state["next_task"] = next_task
 
 
-if "num_items_completed" not in st.session_state:
-    set_next_task()
-    st.session_state["num_items_completed"] = 0
-
-    # if st.session_state["num_items_completed"] < 1:
+store_results_and_clear_session_state()
+st.session_state["num_items_completed"] = num_annotations_for_participant(
+    st.session_state["user_id"]
+)
+set_next_task()
+if st.session_state["num_items_completed"] == 0:
     st.switch_page(f"pages/{st.session_state['next_task']}_prompt.py")
 else:
-    store_results_and_clear_session_state()
-    set_next_task()
     items = "items" if st.session_state["num_items_completed"] != 1 else "item"
     st.write(
         f"You have completed {st.session_state['num_items_completed']} {items}! Do you want to continue?"

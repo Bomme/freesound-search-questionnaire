@@ -2,11 +2,10 @@
 
 import streamlit as st
 
-st.set_page_config(
-    page_title="Sound search questionnaire",
-    page_icon=":question:",
-    initial_sidebar_state="collapsed",
-)
+from backend.database import participant_passed_instructions
+from pages.utils import page_setup
+
+page_setup()
 
 st.title("Sound search questionnaire", anchor=False)
 # st.info("Please read the instructions carefully before proceeding.")
@@ -42,33 +41,6 @@ st.warning(
     icon="⚠️",
 )
 
-# with st.expander("Still a bit unclear about what you need to do? Here's a quick summary:"):
-# # st.header("More about the experiment", anchor=False)
-#
-#     st.markdown(
-#             """
-#             *Still a bit unclear about what you need to do? Here's a quick summary:*
-#
-#             ✍️ Write a query that you would use to search for a sound in an online sound library.
-#             You can write anything you want, but try to be as specific as possible. After all, you really want to find the
-#             sound you are looking for!
-#
-#             👨‍💻 Use common sense and your experience with search engines on the internet to guide your search.
-#
-#             🧠 If it helps, imagine you are looking for a sound to use in one of the following settings:
-#             * a video game
-#             * a movie
-#             * a podcast
-#             * a song
-#             * a presentation
-#             * a website
-#             * a theatre play
-#             * ... or anything else you can think of!
-#
-#             ☝️ There are no other search filters available, so you can only use the search bar in this experiment.
-#             """
-#     )
-
 with st.form("Comprehension check form", clear_on_submit=True):
     st.subheader(
         "Based on the instructions above, once a sound is presented to you, what should you do?",
@@ -94,6 +66,7 @@ if submitted:
     distractor3 = st.session_state["distractor3"]
     if correct and not (distractor1 or distractor2 or distractor3):
         st.success("Correct!")
+        participant_passed_instructions(st.session_state["user_id"])
         st.switch_page("pages/dispatch.py")
     else:
         error_text = """Incorrect! 

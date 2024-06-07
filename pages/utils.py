@@ -1,13 +1,6 @@
 import streamlit as st
 
 
-def assert_user_id():
-    if "user_id" not in st.session_state:
-        st.switch_page("welcome.py")
-    with st.sidebar:
-        st.write(st.session_state)
-
-
 def toggle_session_state(key: str, condition_key=None) -> None:
     """
     Toggles the value of a boolean session state variable.
@@ -22,3 +15,25 @@ def toggle_session_state(key: str, condition_key=None) -> None:
         st.session_state[key] = True
     else:
         st.session_state[key] = not st.session_state[key]
+
+
+def set_page_config():
+    st.set_page_config(
+        page_title="Sound Search Questionnaire",
+        page_icon=":question:",
+        initial_sidebar_state="collapsed",
+    )
+
+
+def redirect_if_no_session_state():
+    if "user_id" not in st.session_state:
+        if "user_id" in st.query_params:
+            st.session_state["user_id"] = st.query_params["user_id"]
+        st.switch_page("welcome.py")
+
+
+def page_setup():
+    """Common setup logic for all subpages. Must be called at the beginning of each page."""
+    set_page_config()
+    redirect_if_no_session_state()
+    st.query_params["user_id"] = st.session_state["user_id"]

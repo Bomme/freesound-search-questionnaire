@@ -2,15 +2,24 @@ import uuid
 
 import streamlit as st
 
+from backend.database import get_participant
+from pages.utils import set_page_config
 
+set_page_config()
+
+query_params = st.query_params.to_dict()
+
+if "user_id" in query_params and st.session_state.get("user_id"):
+    # if we got redirected after a refresh, we need to re-add the query params
+    st.query_params["user_id"] = st.session_state["user_id"]
 if "user_id" not in st.session_state:
     st.session_state["user_id"] = str(uuid.uuid4())
 
-st.set_page_config(
-    page_title="Sound search questionnaire",
-    page_icon=":question:",
-    initial_sidebar_state="collapsed",
-)
+if (participant := get_participant(st.session_state["user_id"])) is not None:
+    if participant.passed_instructions:
+        st.switch_page("pages/dispatch.py")
+    else:
+        st.switch_page("pages/instructions.py")
 
 st.title("Sound search questionnaire", anchor=False)
 

@@ -2,9 +2,9 @@ import streamlit as st
 
 from backend.data_loading import get_single_description
 from pages.shared_survey import aspects_form
-from pages.utils import toggle_session_state, assert_user_id
+from pages.utils import page_setup, toggle_session_state
 
-assert_user_id()
+page_setup()
 
 st.subheader(
     "How would you search for a sound that matches this description?", anchor=False

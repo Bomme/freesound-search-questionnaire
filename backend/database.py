@@ -27,6 +27,7 @@ class Participant(SQLModel, table=True):
     id: str = Field(primary_key=True)
     fluency: str
     experience: str
+    passed_instructions: bool = False
 
 
 def num_annotations_for_participant(database_url, participant_id: str) -> int:
@@ -62,6 +63,17 @@ def get_participant(participant_id: str) -> Optional[Participant]:
         statement = select(Participant).where(Participant.id == participant_id)
         results = session.exec(statement)
         return results.one_or_none()
+
+
+def participant_passed_instructions(participant_id: str):
+    engine = connect()
+    with Session(engine) as session:
+        participant = session.exec(
+            select(Participant).where(Participant.id == participant_id)
+        ).one()
+        participant.passed_instructions = True
+        session.add(participant)
+        session.commit()
 
 
 def add_annotation(

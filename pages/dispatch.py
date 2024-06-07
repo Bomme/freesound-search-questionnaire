@@ -1,4 +1,4 @@
-from random import random
+from random import choice
 
 import streamlit as st
 
@@ -56,12 +56,8 @@ def store_results_and_clear_session_state():
 
 
 def set_next_task():
-    if rand_choice := random() < 0.33:
-        next_task = "text"
-    elif rand_choice < 0.66:
-        next_task = "image"
-    else:
-        next_task = "audio"
+    tasks = ["audio", "image", "text"]
+    next_task = choice(tasks)
     st.session_state["next_task"] = next_task
 
 

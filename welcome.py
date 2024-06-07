@@ -38,7 +38,7 @@ intro = """
    ✍️ By contributing to this questionnaire, you are helping us to understand how people would like to search for sounds
    in the future. This will enable us to develop better sound search tools. We really appreciate your help!
 
-   ℹ️ We will only collect data you provide by submitting your answers and no other personal information.
+   ℹ️ We will only collect data you provide by submitting your answers. No other personal information will be collected.
    
    Please read the following Participant Information Sheet and Informed Consent Form carefully before proceeding.
    """

@@ -100,7 +100,7 @@ def aspects_form(refine=False):
             f"emotion{key_suffix}",
         ),
         (
-            "The **quality** of the sound",
+            "The **recording quality** of the sound",
             "The perceived fidelity of the sound, i.e. how clear or noisy it is",
             f"quality{key_suffix}",
         ),

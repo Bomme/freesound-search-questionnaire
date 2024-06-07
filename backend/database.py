@@ -30,12 +30,11 @@ class Participant(SQLModel, table=True):
     passed_instructions: bool = False
 
 
-def num_annotations_for_participant(database_url, participant_id: str) -> int:
-    engine = connect(database_url)
+def num_annotations_for_participant(participant_id: str) -> int:
+    engine = connect()
     with Session(engine) as session:
         statement = select(func.count(Annotation.id)).where(
             Annotation.participant_id == participant_id,
-            not_(Annotation.unfinished),
         )
         results = session.exec(statement)
         return results.one()

@@ -15,7 +15,7 @@ def store_results_and_clear_session_state():
     if "query1_submitted" not in st.session_state:
         return
     aspects = st.session_state.get("aspects")
-    if "query_refined" not in st.session_state:
+    if "refined_query" not in st.session_state:
         aspects_refined = {}
     else:
         aspects_refined = st.session_state.get("aspects_refine")

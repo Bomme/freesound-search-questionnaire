@@ -16,12 +16,12 @@ def gather_aspects(refine=False):
         "color_density",
         "duration",
         "loudness",
-        "spatial",
         "rhythm",
         "main_source",
         "usage",
         "emotion",
         "quality",
+        "location",
     ]:
         aspects[key] = st.session_state[f"{key}{key_suffix}"]
 
@@ -75,11 +75,6 @@ def aspects_form(refine=False):
             f"loudness{key_suffix}",
         ),
         (
-            "The **spatial** characteristics of the sound",
-            "How the sound is perceived to be located or moving in space, e.g. left/right, front/back, up/down, near/far",
-            f"spatial{key_suffix}",
-        ),
-        (
             "The **rhythm** of the sound",
             "The perceived regularity or irregularity of the sound, e.g. repetitive/chaotic, fast/slow",
             f"rhythm{key_suffix}",
@@ -91,9 +86,9 @@ def aspects_form(refine=False):
         ),
         (
             "The **usage** context of the sound",
-            "What the sound could be used for",
+            "What the sound could be used for, e.g. in a movie, in a game, in a commercial",
             f"usage{key_suffix}",
-        ),  # examples?
+        ),
         (
             "The **perceived emotion** of the sound",
             "How the sound makes you feel",
@@ -104,6 +99,11 @@ def aspects_form(refine=False):
             "The perceived fidelity of the sound, i.e. how clear or noisy it is",
             f"quality{key_suffix}",
         ),
+        (
+            "The **recording setting** of the sound",
+            "The perceived space and environment in which the sound was recorded",
+            f"location{key_suffix}",
+        )
     ]
     random.seed(st.session_state.get("user_id"))
     random.shuffle(options)
@@ -113,7 +113,7 @@ def aspects_form(refine=False):
         st.text_input(
             "Please add any aspects that are important to you but not listed above.",
             key=f"additional_aspects{key_suffix}",
-            placeholder="...",
+            placeholder="add your own",
         )
 
         followup_submitted = st.form_submit_button(

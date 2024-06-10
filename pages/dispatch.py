@@ -1,4 +1,5 @@
 import os
+import time
 from random import choice
 
 import streamlit as st
@@ -14,6 +15,11 @@ DEBUG = os.environ.get("DEBUG")
 def store_results_and_clear_session_state():
     if "query1_submitted" not in st.session_state:
         return
+    now = time.monotonic()
+    if "time" not in st.session_state:
+        time_elapsed = None
+    else:
+        time_elapsed = now - st.session_state["time"]
     aspects = st.session_state.get("aspects")
     if "refined_query" not in st.session_state:
         aspects_refined = {}
@@ -30,6 +36,7 @@ def store_results_and_clear_session_state():
         st.session_state.get("refined_query"),
         [key for key, val in aspects.items() if val],
         [key for key, val in aspects_refined.items() if val],
+        time_elapsed,
     )
     for key in [
         "original_query",
@@ -49,6 +56,7 @@ def store_results_and_clear_session_state():
         "sound_url2",
         "audio_result_id",
         "sound_class",
+        "time",
     ]:
         if key in st.session_state:
             del st.session_state[key]

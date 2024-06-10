@@ -1,3 +1,5 @@
+import time
+
 import streamlit as st
 
 from backend.data_loading import get_sounds_from_same_class
@@ -16,6 +18,7 @@ if "stimulus_id" not in st.session_state:
     st.session_state["stimulus_id"] = sound_id1
     st.session_state["sound_url2"] = sound_url2
     st.session_state["audio_result_id"] = sound_id2
+    st.session_state["time"] = time.monotonic()
 
 
 st.audio(st.session_state["sound_url1"], format="audio/mp3", start_time=0)

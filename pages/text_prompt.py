@@ -1,3 +1,5 @@
+import time
+
 import streamlit as st
 
 from backend.data_loading import get_single_description
@@ -14,6 +16,7 @@ if "stimulus_id" not in st.session_state:
     filename, description = get_single_description()
     st.session_state["stimulus"] = description
     st.session_state["stimulus_id"] = filename
+    st.session_state["time"] = time.monotonic()
 
 with st.container(border=True):
     st.markdown(f"*{st.session_state['stimulus']}*")

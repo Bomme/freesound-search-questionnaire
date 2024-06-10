@@ -1,5 +1,6 @@
-import streamlit as st
+import time
 
+import streamlit as st
 
 from backend.data_loading import get_single_image
 from pages.shared_survey import aspects_form
@@ -14,6 +15,7 @@ if "stimulus_id" not in st.session_state:
     st.session_state["stimulus"] = image
     st.session_state["sound_class"] = sound_class
     st.session_state["stimulus_id"] = filename
+    st.session_state["time"] = time.monotonic()
 
 st.image(st.session_state["stimulus"], use_column_width=True)
 

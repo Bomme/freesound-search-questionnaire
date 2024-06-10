@@ -33,7 +33,7 @@ st.markdown(
 intro = """
    ###
 
-   🎵 You will be asked to perform an imaginative tasks and answer questions about how you search for sounds.
+   🎵 You will be asked to perform imaginative tasks and answer questions about how you search for sounds.
 
    ✍️ By contributing to this questionnaire, you are helping us to understand how people would like to search for sounds
    in the future. This will enable us to develop better sound search tools. We really appreciate your help!

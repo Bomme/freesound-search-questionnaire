@@ -4,8 +4,8 @@ ID,Class,Group,Level,FileNameModified,url
 106383,m-sp,3,D,8 bar 165,https://cdn.freesound.org/previews/106/106383_919715-hq.mp3
 529278,m-sp,4,D,Audio 3Patt 11 100 bpm03,https://cdn.freesound.org/previews/529/529278_11727276-hq.mp3
 434301,m-si,1,E,Guitar Chords,https://cdn.freesound.org/previews/434/434301_6117286-hq.mp3
-501300,m-si,1,E,Toy Xylophone,https://cdn.freesound.org/previews/501/501300_10865671-hq.mp3
-254085,m-si,2,D,Sample Vocal 2,https://cdn.freesound.org/previews/254/254085_224992-hq.mp3
+501300,is-p,1,E,Toy Xylophone,https://cdn.freesound.org/previews/501/501300_10865671-hq.mp3
+254085,m-m,2,D,Sample Vocal 2,https://cdn.freesound.org/previews/254/254085_224992-hq.mp3
 416778,m-si,4,D,Happy sandbox,https://cdn.freesound.org/previews/416/416778_5235550-hq.mp3
 321029,m-m,2,E,Loop_Hard_Working_Alien_04,https://cdn.freesound.org/previews/321/321029_5123851-hq.mp3
 640468,m-m,3,E,Piano Improvisation + Violin Cover,https://cdn.freesound.org/previews/640/640468_13470105-hq.mp3
@@ -26,7 +26,7 @@ ID,Class,Group,Level,FileNameModified,url
 608983,is-k,3,E,A note piano,https://cdn.freesound.org/previews/608/608983_13474092-hq.mp3
 333851,is-k,4,D,g4 accordeon,https://cdn.freesound.org/previews/333/333851_3222989-hq.mp3
 467289,is-k,2,D,Dissonant Piano Stinger,https://cdn.freesound.org/previews/467/467289_9895957-hq.mp3
-668344,is-k,1,D,Marimba,https://cdn.freesound.org/previews/668/668344_13642941-hq.mp3
+668344,is-p,1,D,Marimba,https://cdn.freesound.org/previews/668/668344_13642941-hq.mp3
 579724,is-e,4,E,Synth,https://cdn.freesound.org/previews/579/579724_11502075-hq.mp3
 26419,is-e,2,D,fm7 bell,https://cdn.freesound.org/previews/26/26419_19852-hq.mp3
 524529,is-e,3,D,Piano112,https://cdn.freesound.org/previews/524/524529_11630708-hq.mp3
@@ -68,17 +68,17 @@ ID,Class,Group,Level,FileNameModified,url
 624089,fx-n,3,D,Stream in a forest 2,https://cdn.freesound.org/previews/624/624089_2008500-hq.mp3
 4211,fx-n,4,D,fire.crackling,https://cdn.freesound.org/previews/4/4211_8043-hq.mp3
 360645,fx-el,3,E,Tjapper-BirdFx 104,https://cdn.freesound.org/previews/360/360645_52391-hq.mp3
-537884,fx-el,2,D,Cool Bell Effect_St,https://cdn.freesound.org/previews/537/537884_2019171-hq.mp3
+537884,fx-ex,2,D,Cool Bell Effect_St,https://cdn.freesound.org/previews/537/537884_2019171-hq.mp3
 625803,fx-el,2,E,LAZER3,https://cdn.freesound.org/previews/625/625803_1540717-hq.mp3
 495989,fx-el,1,D,Wave_nr_1,https://cdn.freesound.org/previews/495/495989_5443598-hq.mp3
 220516,fx-ex,3,D,strum _gun shot_,https://cdn.freesound.org/previews/220/220516_4072057-hq.mp3
 417129,fx-ex,1,D,skipping / glitch / tape 1,https://cdn.freesound.org/previews/417/417129_4880868-hq.mp3
 560572,fx-ex,3,D,xHuman1 modified,https://cdn.freesound.org/previews/560/560572_2019171-hq.mp3
 537908,fx-ex,3,D,Whirlpool Suck Reversed,https://cdn.freesound.org/previews/537/537908_11979494-hq.mp3
-140867,fx-d,2,E,Boing,https://cdn.freesound.org/previews/140/140867_649468-hq.mp3
-494981,fx-d,4,E,Risers - Horror Whooshes Tension Builder 1,https://cdn.freesound.org/previews/494/494981_6687700-hq.mp3
-567207,fx-d,4,D,Message Ringtone,https://cdn.freesound.org/previews/567/567207_5479102-hq.mp3
-540568,fx-d,2,D,UI Pop Up,https://cdn.freesound.org/previews/540/540568_10912485-hq.mp3
+140867,fx-el,2,E,Boing,https://cdn.freesound.org/previews/140/140867_649468-hq.mp3
+494981,fx-el,4,E,Risers - Horror Whooshes Tension Builder 1,https://cdn.freesound.org/previews/494/494981_6687700-hq.mp3
+567207,fx-el,4,D,Message Ringtone,https://cdn.freesound.org/previews/567/567207_5479102-hq.mp3
+540568,fx-el,2,D,UI Pop Up,https://cdn.freesound.org/previews/540/540568_10912485-hq.mp3
 543845,ss-n,4,E,Birds in Montreal,https://cdn.freesound.org/previews/543/543845_6605732-hq.mp3
 250276,ss-n,4,E,140916 Jungle Amb evening Chiangmai_Thailand.,https://cdn.freesound.org/previews/250/250276_1937256-hq.mp3
 405134,ss-n,1,D,Autumn forest - leaves falling close to pond II (loopable),https://cdn.freesound.org/previews/405/405134_3958938-hq.mp3

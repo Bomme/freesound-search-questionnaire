@@ -4,8 +4,8 @@ ID,Class,Group,Level,FileNameModified
 106383,m-sp,3,D,8 bar 165
 529278,m-sp,4,D,Audio 3Patt 11 100 bpm03
 434301,m-si,1,E,Guitar Chords
-501300,m-si,1,E,Toy Xylophone
-254085,m-si,2,D,Sample Vocal 2
+501300,is-p,1,E,Toy Xylophone
+254085,m-m,2,D,Sample Vocal 2
 416778,m-si,4,D,Happy sandbox
 321029,m-m,2,E,Loop_Hard_Working_Alien_04
 640468,m-m,3,E,Piano Improvisation + Violin Cover
@@ -26,7 +26,7 @@ ID,Class,Group,Level,FileNameModified
 608983,is-k,3,E,A note piano
 333851,is-k,4,D,g4 accordeon
 467289,is-k,2,D,Dissonant Piano Stinger
-668344,is-k,1,D,Marimba
+668344,is-p,1,D,Marimba
 579724,is-e,4,E,Synth
 26419,is-e,2,D,fm7 bell
 524529,is-e,3,D,Piano112
@@ -68,17 +68,17 @@ ID,Class,Group,Level,FileNameModified
 624089,fx-n,3,D,Stream in a forest 2
 4211,fx-n,4,D,fire.crackling
 360645,fx-el,3,E,Tjapper-BirdFx 104
-537884,fx-el,2,D,Cool Bell Effect_St
+537884,fx-ex,2,D,Cool Bell Effect_St
 625803,fx-el,2,E,LAZER3
 495989,fx-el,1,D,Wave_nr_1
 220516,fx-ex,3,D,strum _gun shot_
 417129,fx-ex,1,D,skipping / glitch / tape 1
 560572,fx-ex,3,D,xHuman1 modified
 537908,fx-ex,3,D,Whirlpool Suck Reversed
-140867,fx-d,2,E,Boing
-494981,fx-d,4,E,Risers - Horror Whooshes Tension Builder 1
-567207,fx-d,4,D,Message Ringtone
-540568,fx-d,2,D,UI Pop Up
+140867,fx-el,2,E,Boing
+494981,fx-el,4,E,Risers - Horror Whooshes Tension Builder 1
+567207,fx-el,4,D,Message Ringtone
+540568,fx-el,2,D,UI Pop Up
 543845,ss-n,4,E,Birds in Montreal
 250276,ss-n,4,E,140916 Jungle Amb evening Chiangmai_Thailand.
 405134,ss-n,1,D,Autumn forest - leaves falling close to pond II (loopable)

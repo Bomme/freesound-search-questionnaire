@@ -1,3 +1,4 @@
+import os
 from random import choice
 
 import streamlit as st
@@ -6,6 +7,8 @@ from backend.database import add_annotation, num_annotations_for_participant
 from pages.utils import page_setup
 
 page_setup()
+
+DEBUG = os.environ.get("DEBUG")
 
 
 def store_results_and_clear_session_state():
@@ -49,14 +52,15 @@ def store_results_and_clear_session_state():
     ]:
         if key in st.session_state:
             del st.session_state[key]
-    # if "counter_incremented" not in st.session_state:
-
-    # st.session_state["counter_incremented"] = True
 
 
 def set_next_task():
-    tasks = ["audio", "image", "text"]
-    next_task = choice(tasks)
+    if "next_task" in st.session_state:
+        next_task_map = {"audio": "image", "image": "text", "text": "audio"}
+        next_task = next_task_map[st.session_state["next_task"]]
+    else:
+        tasks = ["audio", "image", "text"]
+        next_task = choice(tasks)
     st.session_state["next_task"] = next_task
 
 
@@ -65,12 +69,14 @@ st.session_state["num_items_completed"] = num_annotations_for_participant(
     st.session_state["user_id"]
 )
 set_next_task()
-if st.session_state["num_items_completed"] == 0:
-    st.switch_page(f"pages/{st.session_state['next_task']}_prompt.py")
-else:
-    items = "items" if st.session_state["num_items_completed"] != 1 else "item"
+if (
+    st.session_state["num_items_completed"] != 0
+    and (st.session_state["num_items_completed"] % 3) == 0
+):
+    num_sets = st.session_state["num_items_completed"] // 3
+    items = "sets" if num_sets != 1 else "set"
     st.write(
-        f"You have completed {st.session_state['num_items_completed']} {items}! Do you want to continue?"
+        f"You have completed {num_sets} {items}!\n\nWe recommend completing 3 - 5 sets. Do you want to continue?"
     )
     st.page_link(
         f"pages/{st.session_state['next_task']}_prompt.py",
@@ -81,5 +87,8 @@ else:
     st.page_link(
         "pages/open_question.py", label="End survey", icon="🔚", use_container_width=True
     )
-    with st.expander("Debug", expanded=False):
-        st.write(st.session_state)
+    if DEBUG:
+        with st.expander("Debug", expanded=False):
+            st.write(st.session_state)
+else:
+    st.switch_page(f"pages/{st.session_state['next_task']}_prompt.py")

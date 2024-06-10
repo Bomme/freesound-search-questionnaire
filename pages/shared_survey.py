@@ -26,7 +26,7 @@ def gather_aspects(refine=False):
         aspects[key] = st.session_state[f"{key}{key_suffix}"]
 
     aspects["additional_aspects"] = st.session_state[f"additional_aspects{key_suffix}"]
-    st.session_state["aspects" + key_suffix] = aspects
+    st.session_state[f"aspects{key_suffix}"] = aspects
 
 
 def aspects_form(refine=False):

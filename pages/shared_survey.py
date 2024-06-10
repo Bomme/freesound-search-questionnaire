@@ -105,6 +105,7 @@ def aspects_form(refine=False):
             f"quality{key_suffix}",
         ),
     ]
+    random.seed(st.session_state.get("user_id"))
     random.shuffle(options)
     with st.form("desc_form", clear_on_submit=True, border=False):
         for option, help_str, key in options:

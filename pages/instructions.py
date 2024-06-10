@@ -8,7 +8,6 @@ from pages.utils import page_setup
 page_setup()
 
 st.title("Sound search questionnaire", anchor=False)
-# st.info("Please read the instructions carefully before proceeding.")
 
 st.header("Instructions", anchor=False)
 
@@ -22,11 +21,7 @@ st.markdown(
     
     🧠 Imagine a limitless system where you can find any sound in any way you can think of, using text only.
     
-    📋 To guide your search, you will be given an example. The example will be either text or audio, depending on the task.
-    
-    🎯 Depending on the task, you will be asked to try to find *one* specific sound or as many sounds as you can.
-    
-    📝 After each search, you will be asked to answer a few questions about your choices.
+    📋 To guide your search, you will be given an example. The example will be either text, image or sound.
     
     ❌ You will not actually perform the search. You will only imagine that you are searching for the sounds.
     
@@ -49,7 +44,7 @@ with st.form("Comprehension check form", clear_on_submit=True):
     options = [
         ("Record myself imitating the sound", "distractor1"),
         (
-            "Listen to the sound carefully and come up with a query to find similar sounds",
+            "Take inspiration from the example to come up with a search query for a hypothetical sound library",
             "correct",
         ),
         ("Listen again without using headphones", "distractor2"),

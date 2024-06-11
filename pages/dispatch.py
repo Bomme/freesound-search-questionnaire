@@ -27,6 +27,12 @@ def store_results_and_clear_session_state():
         aspects_refined = st.session_state.get("aspects_refine")
     if st.session_state.get("query2_skipped"):
         st.session_state["refined_query"] = """<<SKIPPED>>"""
+    aspects_items = [key for key, val in aspects.items() if val]
+    if "additional_aspects" in aspects:
+        aspects_items.append(aspects["additional_aspects"])
+    refined_aspects_items = [key for key, val in aspects_refined.items() if val]
+    if "additional_aspects" in aspects_refined:
+        refined_aspects_items.append(aspects_refined["additional_aspects"])
     add_annotation(
         st.session_state.get("user_id"),
         st.session_state.get("stimulus_id"),
@@ -34,8 +40,8 @@ def store_results_and_clear_session_state():
         st.session_state.get("audio_result_id"),
         st.session_state.get("original_query"),
         st.session_state.get("refined_query"),
-        [key for key, val in aspects.items() if val],
-        [key for key, val in aspects_refined.items() if val],
+        aspects_items,
+        refined_aspects_items,
         st.session_state.get("result_relevance", -1),
         time_elapsed,
     )

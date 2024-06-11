@@ -1,7 +1,7 @@
 import streamlit as st
 
 from backend.data_loading import get_related_sound_for_description
-from pages.shared_survey import aspects_form, query_comparison_form
+from pages.shared_survey import query_comparison_form
 from pages.utils import page_setup
 
 page_setup()
@@ -45,18 +45,4 @@ st.divider()
 
 rewrite_instructions = "What would you type into the search bar to find sounds like the reference description 1️⃣ and avoid sounds like 2️⃣?"
 
-query_submitted, query = query_comparison_form(rewrite_instructions)
-
-if query and query_submitted:
-    st.info(f"Your new query:\n\n*{query}*")
-
-    st.session_state["refined_query"] = query
-    st.session_state["result_relevance"] = st.session_state["result_relevance_score"]
-
-    followup_submitted = aspects_form(refine=True)
-
-    if followup_submitted:
-        st.switch_page("pages/dispatch.py")
-
-if st.session_state.get("query2_skipped"):
-    st.switch_page("pages/dispatch.py")
+query_comparison_form(rewrite_instructions)

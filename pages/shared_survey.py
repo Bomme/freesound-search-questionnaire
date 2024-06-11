@@ -163,7 +163,21 @@ def query_comparison_form(rewrite_instructions: str):
             label="I don't want to change my query",
             type="secondary",
             on_click=toggle_session_state,
-            args=["query2_skipped"],
+            args=["query2_skipped", "result_relevance_score"],
             disabled=query_submitted,
         )
-    return query_submitted, query
+
+    if query and query_submitted:
+        st.info(f"Your new query:\n\n*{query}*")
+
+        st.session_state["refined_query"] = query
+        st.session_state["result_relevance"] = st.session_state["result_relevance_score"]
+
+        followup_submitted = aspects_form(refine=True)
+
+        if followup_submitted:
+            st.switch_page("pages/dispatch.py")
+
+    if st.session_state.get("query2_skipped"):
+        st.session_state["result_relevance"] = st.session_state["result_relevance_score"]
+        st.switch_page("pages/dispatch.py")

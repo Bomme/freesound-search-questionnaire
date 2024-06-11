@@ -1,8 +1,8 @@
 import streamlit as st
 
 from backend.data_loading import get_sound_from_class
-from pages.shared_survey import aspects_form
-from pages.utils import page_setup, toggle_session_state
+from pages.shared_survey import aspects_form, query_comparison_form
+from pages.utils import page_setup
 
 page_setup()
 st.title("Refine your query", anchor=False)
@@ -35,41 +35,15 @@ st.info(
 st.audio(st.session_state["sound_url2"], format="audio/mp3")
 
 st.divider()
+rewrite_instructions = "What would you type into the search bar to find sounds for the image 1️⃣ and avoid sounds like 2️⃣?"
 
-query_submitted = st.session_state.get("query2_submitted", False)
-with st.form("query_comparison_form", border=False):
-    st.subheader(
-        "What would you type into the search bar to find sounds for the image 1️⃣ and avoid sounds like 2️⃣?",
-        anchor=False,
-    )
-    st.info(f"Your original query was:\n\n*{st.session_state.get('original_query')}*")
-    query = st.text_input(
-        "Search bar",
-        disabled=query_submitted,
-        key="query2",
-    )
-    query = query.strip()
-
-    st.form_submit_button(
-        label="Submit",
-        type="primary",
-        on_click=toggle_session_state,
-        args=["query2_submitted", "query2"],
-        disabled=query_submitted,
-    )
-    st.form_submit_button(
-        label="I don't want to change my query",
-        type="secondary",
-        on_click=toggle_session_state,
-        args=["query2_skipped"],
-        disabled=query_submitted,
-    )
-
+query_submitted, query = query_comparison_form(rewrite_instructions)
 
 if query and query_submitted:
     st.info(f"Your new query:\n\n*{query}*")
 
     st.session_state["refined_query"] = query
+    st.session_state["result_relevance"] = st.session_state["result_relevance_score"]
     followup_submitted = aspects_form(refine=True)
 
     if followup_submitted:

@@ -20,6 +20,7 @@ class Annotation(SQLModel, table=True):
     query2: str
     aspects1: str
     aspects2: str
+    result_relevance: int
     time: Optional[float]
 
 
@@ -84,6 +85,7 @@ def add_annotation(
     query2: str,
     aspects1: list[str],
     aspects2: list[str],
+    result_relevance: int,
     time: float | None = None,
 ):
     engine = connect()
@@ -99,6 +101,7 @@ def add_annotation(
             query2=query2,
             aspects1=aspects1,
             aspects2=aspects2,
+            result_relevance=result_relevance,
             time=time,
         )
         session.add(annotation)

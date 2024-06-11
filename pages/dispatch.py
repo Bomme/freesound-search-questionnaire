@@ -36,6 +36,7 @@ def store_results_and_clear_session_state():
         st.session_state.get("refined_query"),
         [key for key, val in aspects.items() if val],
         [key for key, val in aspects_refined.items() if val],
+        st.session_state.get("result_relevance", -1),
         time_elapsed,
     )
     for key in [
@@ -49,6 +50,7 @@ def store_results_and_clear_session_state():
         "query2",
         "sound_url",
         "refined_query",
+        "result_relevance",
         "description_id",
         "stimulus",
         "stimulus_id",

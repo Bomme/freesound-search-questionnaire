@@ -1,15 +1,17 @@
 import streamlit as st
 
 
-def toggle_session_state(key: str, condition_key=None) -> None:
+def toggle_session_state(key: str, *condition_keys) -> None:
     """
     Toggles the value of a boolean session state variable.
 
     :param key: The key of the variable in the streamlit session state.
-    :param condition_key: An additional condition that is checked in the session state. If the condition is not met, the variable is not toggled.
+    :param condition_keys: A set of additional conditions that is checked in the session state.
+    If the condition is not met, the variable is not toggled.
     By default, the variable is toggled.
     """
-    if condition_key is not None and not st.session_state.get(condition_key):
+    #if condition_key is not None and not st.session_state.get(condition_key):
+    if any(not st.session_state.get(condition_key) for condition_key in condition_keys):
         return
     if key not in st.session_state:
         st.session_state[key] = True

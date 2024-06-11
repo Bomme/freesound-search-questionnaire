@@ -2,6 +2,8 @@ import random
 
 import streamlit as st
 
+from pages.utils import toggle_session_state
+
 
 def gather_aspects(refine=False):
     if refine:
@@ -103,7 +105,7 @@ def aspects_form(refine=False):
             "The **recording setting** of the sound",
             "The perceived space and environment in which the sound was recorded",
             f"location{key_suffix}",
-        )
+        ),
     ]
     random.seed(st.session_state.get("user_id"))
     random.shuffle(options)
@@ -120,3 +122,48 @@ def aspects_form(refine=False):
             "Submit", type="primary", on_click=gather_aspects, args=[refine]
         )
         return followup_submitted
+
+
+def query_comparison_form(rewrite_instructions: str):
+    query_submitted = st.session_state.get("query2_submitted", False)
+    with st.form("query_comparison_form", border=False):
+        st.radio(
+            "How relevant is this sound to your query?",
+            options=[0, 1, 2, 3, 4],
+            format_func=[
+                "Not relevant",
+                "Slightly relevant",
+                "Moderately relevant",
+                "Strongly relevant",
+                "Perfect match",
+            ].__getitem__,
+            index=None,
+            key="result_relevance_score",
+        )
+
+        st.subheader(rewrite_instructions, anchor=False)
+        st.info(
+            f"Your original query was:\n\n*{st.session_state.get('original_query')}*"
+        )
+        query = st.text_input(
+            "Search bar",
+            disabled=query_submitted,
+            key="query2",
+        )
+        query = query.strip()
+
+        st.form_submit_button(
+            label="Submit",
+            type="primary",
+            on_click=toggle_session_state,
+            args=["query2_submitted", "query2", "result_relevance_score"],
+            disabled=query_submitted,
+        )
+        st.form_submit_button(
+            label="I don't want to change my query",
+            type="secondary",
+            on_click=toggle_session_state,
+            args=["query2_skipped"],
+            disabled=query_submitted,
+        )
+    return query_submitted, query

@@ -68,7 +68,7 @@ def get_related_sound_for_description(source_file_name: str):
     description = descriptions[descriptions["filename"] == source_file_name].sample(1)
     return (
         description["rel_audio_url"].item(),
-        description["filename"].item(),
+        description["rel_filename"].item(),
         description["rel_start"].item(),
         description["rel_end"].item(),
     )

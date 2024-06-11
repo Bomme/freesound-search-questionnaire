@@ -17,8 +17,7 @@ st.subheader(
     anchor=False,
 )
 st.info(
-    "This image is an example of an image that you ***do*** want to find a matching sound for. This is the image you "
-    "viewed in the previous step.",
+    "This shows a scene that you ***do*** want to find a sound for. This is the image you viewed in the previous step.",
     icon="✅",
 )
 

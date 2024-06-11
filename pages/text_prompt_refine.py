@@ -18,8 +18,7 @@ if "sound_url2" not in st.session_state:
 
 st.subheader("1️⃣This is the description of a sound you are looking for.", anchor=False)
 st.info(
-    "This description is an example of a sound that you ***do*** want to be among the results. This is the description you "
-    "viewed in the previous step.",
+    "This describes a sound that you ***do*** want to be among the results. This is the description you viewed in the previous step.",
     icon="✅",
 )
 

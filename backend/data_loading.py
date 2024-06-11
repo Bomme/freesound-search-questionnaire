@@ -76,18 +76,22 @@ def get_related_sound_for_description(source_file_name: str):
 
 def get_sounds_from_same_class(sound_id: str | None = None):
     sounds = load_sound_data()
-    if sound_id is not None:
+    if sound_id is None:
+        available_classes = list(set([item["Class"] for item in sounds]))
+        class_to_choose = random.choice(available_classes)
+    else:
         class_to_choose = [item["Class"] for item in sounds if item["ID"] == sound_id][
             0
         ]
-    else:
-        class_to_choose = sounds[random.randint(0, len(sounds) - 1)]["Class"]
 
     sounds_from_same_category = [
         item for item in sounds if item["Class"] == class_to_choose
     ]
 
-    if sound_id is not None:
+    if sound_id is None:
+        random.shuffle(sounds_from_same_category)
+        sound_1, sound_2 = sounds_from_same_category[:2]
+    else:
         sound_1 = [
             item for item in sounds_from_same_category if item["ID"] == sound_id
         ][0]
@@ -95,9 +99,6 @@ def get_sounds_from_same_class(sound_id: str | None = None):
         sound_2 = sounds_from_same_category[
             random.randint(0, len(sounds_from_same_category) - 1)
         ]
-    else:
-        random.shuffle(sounds_from_same_category)
-        sound_1, sound_2 = sounds_from_same_category[:2]
     return (sound_1["url"], sound_1["ID"]), (sound_2["url"], sound_2["ID"])
 
 

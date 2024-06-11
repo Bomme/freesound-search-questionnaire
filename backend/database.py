@@ -31,6 +31,13 @@ class Participant(SQLModel, table=True):
     passed_instructions: bool = False
 
 
+class Comments(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    participant_id: str = Field(foreign_key="participant.id")
+    comment_general: str
+    comment_future: str
+
+
 def num_annotations_for_participant(participant_id: str) -> int:
     engine = connect()
     with Session(engine) as session:
@@ -107,6 +114,21 @@ def add_annotation(
         session.add(annotation)
         session.commit()
 
+
+def add_comments(
+    participant_id: str,
+    comment_general: str,
+    comment_future: str,
+):
+    engine = connect()
+    with Session(engine) as session:
+        comments = Comments(
+            participant_id=participant_id,
+            comment_general=comment_general,
+            comment_future=comment_future,
+        )
+        session.add(comments)
+        session.commit()
 
 @st.cache_resource(max_entries=1)
 def connect(verbose=False):

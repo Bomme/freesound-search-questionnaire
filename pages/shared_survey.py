@@ -129,14 +129,14 @@ def query_comparison_form(rewrite_instructions: str):
     with st.form("query_comparison_form", border=False):
         st.radio(
             "How relevant is this sound to your query?",
-            options=[0, 1, 2, 3, 4],
-            format_func=[
-                "Not relevant",
-                "Slightly relevant",
-                "Moderately relevant",
-                "Strongly relevant",
-                "Perfect match",
-            ].__getitem__,
+            options=[1, 2, 3, 4, 5],
+            format_func={
+                1: "Not relevant",
+                2: "Slightly relevant",
+                3: "Moderately relevant",
+                4: "Strongly relevant",
+                5: "Perfect match",
+            }.get,
             index=None,
             key="result_relevance_score",
         )

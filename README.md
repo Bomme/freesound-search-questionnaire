@@ -6,5 +6,5 @@ A streamlit-based web application for conducting a user study on possible search
 There are three types of stimuli: text descriptions, audio clips, and images.
 
 1. The text descriptions and associated audio clips are sourced from [Clotho](https://doi.org/10.5281/zenodo.4783391) and selected using relevance judements from the [TAU Audio-Text Graded Relevances 2023 Dataset](https://github.com/xieh97/retrieval-relevance-crowdsourcing).
-2. The audio clips are selected from [FreeSound](https://freesound.org/).
-3. The images were sourced from [Openverse](https://openverse.org/).
+2. The audio clips are selected from [FreeSound](https://freesound.org/), specifically [FSD50K](https://zenodo.org/record/4060432).
+3. The images were sourced from [Openverse](https://openverse.org/) to fit audio clips from [FreeSound](https://freesound.org/).

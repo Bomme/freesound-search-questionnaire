@@ -16,21 +16,7 @@ class CategorisedSound:
 
 @st.cache_data()
 def load_image_data():
-    image_df = pd.read_csv(
-        "data/image_annotations.csv",
-        names=[
-            "sound_class",
-            "id",
-            "title",
-            "thumbnail",
-            "foreign_landing_url",
-            "url",
-            "license",
-            "license_version",
-            "license_url",
-            "creator",
-        ],
-    )
+    image_df = pd.read_csv("data/image_annotations.csv")
     return image_df
 
 
@@ -123,7 +109,7 @@ def get_sound_from_class(sd_class: str, sound_id_to_omit: str | None = None):
 def get_single_image():
     image_df = load_image_data()
     image = image_df.sample(1)
-    return image["id"].item(), image["thumbnail"].item(), image["sound_class"].item()
+    return image["id"].item(), image["thumbnail"].item(), image["sound_class"].item(), image["sound_id"].item(), image["sound_url"].item()
 
 
 if __name__ == "__main__":

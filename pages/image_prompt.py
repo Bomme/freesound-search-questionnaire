@@ -11,10 +11,12 @@ page_setup()
 st.subheader("How would you search for a sound that matches this image?", anchor=False)
 
 if "stimulus_id" not in st.session_state:
-    filename, image, sound_class = get_single_image()
+    filename, image, sound_class, sound_id, sound_url = get_single_image()
     st.session_state["stimulus"] = image
     st.session_state["sound_class"] = sound_class
     st.session_state["stimulus_id"] = filename
+    st.session_state["sound_url2"] = sound_url
+    st.session_state["audio_result_id"] = sound_id
     st.session_state["time"] = time.monotonic()
 
 st.image(st.session_state["stimulus"], use_column_width=True)

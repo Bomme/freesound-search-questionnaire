@@ -1,16 +1,10 @@
 import streamlit as st
 
-from backend.data_loading import get_sound_from_class
 from pages.shared_survey import query_comparison_form
 from pages.utils import page_setup
 
 page_setup()
 st.title("Refine your query", anchor=False)
-
-if "sound_url2" not in st.session_state:
-    sound_id, sound_url = get_sound_from_class(st.session_state["sound_class"])
-    st.session_state["sound_url2"] = sound_url
-    st.session_state["audio_result_id"] = sound_id
 
 st.subheader(
     "1️⃣ This is the image that you want to find an accompanying sound for.",

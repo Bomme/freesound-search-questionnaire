@@ -12,7 +12,6 @@ st.title("Sound search questionnaire", anchor=False)
 st.header("Instructions", anchor=False)
 
 
-# TODO add using text only
 st.markdown(
     """
     🔎 In this experiment, you will be asked to search for sounds in a hypothetical sound library.

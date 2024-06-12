@@ -1,16 +1,10 @@
 import streamlit as st
 
-from backend.data_loading import get_sounds_from_same_class
 from pages.shared_survey import query_comparison_form
 from pages.utils import page_setup
 
 page_setup()
 st.title("Refine your query", anchor=False)
-
-if "audio_result_id" not in st.session_state:
-    sound_1, sound_2 = get_sounds_from_same_class(st.session_state.get("stimulus_id"))
-    st.session_state["audio_result_id"] = sound_2[1]
-    st.session_state["sound_url2"] = sound_2[0]
 
 st.subheader("1️⃣ This is the sound you are looking for.", anchor=False)
 st.info(

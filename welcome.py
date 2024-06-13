@@ -40,6 +40,8 @@ intro = """
 
    ℹ️ We will only collect data you provide by submitting your answers. No other personal information will be collected.
    
+   ⏱ The questionnaire will take approximately 12 - 15 minutes to complete.
+   
    Please read the following Participant Information Sheet and Informed Consent Form carefully before proceeding.
    """
 

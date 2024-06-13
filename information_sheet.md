@@ -19,15 +19,15 @@ people by letting them use natural language, or the way we talk every day, to fi
 need more easily. The duration of this project is 6 weeks.
 
 **Methodology and participation:** If you wish to participate in this online survey, we first
-ask you for your level of English proficiency and if you have any experience with online sound
-libraries. You will then be presented with a sound or a description of a sound. We ask you to
-write down how you would search for that sound using an imagined system. You can choose
-to skip a sound or description if you like. You need to write your answers in English.
-After you finish a set of these examples, we ask you if you would like to end the survey or start
-over. You can do 5 sets in total. The time required to complete the survey with one set of
-questions is approximately 5 minutes.
+ask you for your level of English proficiency, and if you have any experience with online sound libraries.
+You will then be presented with a sound, a description of a sound, or an image.
+We ask you to write down how you would search for a fitting sound using an imagined system.
+You can choose to skip a task if you like.
+You need to write your answers in English.
+After you finish three sets of these examples, we ask you if you would like to end the survey or continue. You can do 7 sets in total.
+The time required to complete the survey with three sets of questions is approximately 12 minutes.
 
-**Inclusion criteria for participation:** This experiment is openly accessible on the internet
+**Inclusion criteria for participation:** This experiment is openly accessible on the internet, 
 and its content is suitable for all individuals. However, due to legal reasons, participation is
 restricted to individuals above the age of 14. Additionally, we encourage participation from
 English speakers with experience in using large-scale sound libraries.

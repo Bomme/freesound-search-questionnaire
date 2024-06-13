@@ -90,11 +90,11 @@ if (
     and (st.session_state["num_items_completed"] % 3) == 0
 ):
     num_sets = st.session_state["num_items_completed"] // 3
-    if num_sets >= 5:
+    if num_sets >= 7:
         st.switch_page("pages/open_question.py")
     items = "sets" if num_sets != 1 else "set"
     st.write(
-        f"You have completed {num_sets} {items}!\n\nWe recommend completing 3 - 5 sets. Do you want to continue?"
+        f"You have completed {num_sets} {items}!\n\nWe recommend completing 3 - 7 sets. Do you want to continue?"
     )
     st.page_link(
         f"pages/{st.session_state['next_task']}_prompt.py",

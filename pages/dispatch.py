@@ -85,13 +85,12 @@ st.session_state["num_items_completed"] = num_annotations_for_participant(
     st.session_state["user_id"]
 )
 set_next_task()
-if (
-    st.session_state["num_items_completed"] != 0
-    and (st.session_state["num_items_completed"] % 3) == 0
+num_sets = st.session_state["num_items_completed"] // 3
+if num_sets >= 7:
+    st.switch_page("pages/open_question.py")
+elif (
+    num_sets >= 3 and (st.session_state["num_items_completed"] % 3) == 0
 ):
-    num_sets = st.session_state["num_items_completed"] // 3
-    if num_sets >= 7:
-        st.switch_page("pages/open_question.py")
     items = "sets" if num_sets != 1 else "set"
     st.write(
         f"You have completed {num_sets} {items}!\n\nWe recommend completing 3 - 7 sets. Do you want to continue?"

@@ -8,9 +8,8 @@ from pages.utils import page_setup, toggle_session_state
 
 
 page_setup()
-st.title("Query for a sound", anchor=False)
-
-st.subheader("How would you search for a sound like this?", anchor=False)
+num_items_completed = st.session_state['num_items_completed']
+st.title(f"Set {num_items_completed // 3 + 1}: Example {num_items_completed % 3 + 1}", anchor=False)
 
 if "stimulus_id" not in st.session_state:
     (sound_url1, sound_id1), (sound_url2, sound_id2) = get_sounds_from_same_class()
@@ -20,14 +19,15 @@ if "stimulus_id" not in st.session_state:
     st.session_state["audio_result_id"] = sound_id2
     st.session_state["time"] = time.monotonic()
 
-
-st.audio(st.session_state["sound_url1"], format="audio/mp3", start_time=0)
-
 st.subheader(
-    "Imagine you are looking for a sound exactly like the one above. "
+    "Imagine you are looking for a sound exactly like the one below. "
     "What would you type into the search bar?",
     anchor=False,
 )
+
+st.audio(st.session_state["sound_url1"], format="audio/mp3", start_time=0)
+
+st.divider()
 
 query_submitted = st.session_state.get("query1_submitted", False)
 

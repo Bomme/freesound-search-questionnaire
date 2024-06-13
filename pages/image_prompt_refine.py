@@ -4,8 +4,8 @@ from pages.shared_survey import query_comparison_form
 from pages.utils import page_setup
 
 page_setup()
-st.title("Refine your query", anchor=False)
-
+num_items_completed = st.session_state['num_items_completed']
+st.title(f"Set {num_items_completed // 3 + 1}: Example {num_items_completed % 3 + 1}", anchor=False)
 st.subheader(
     "1️⃣ This is the image that you want to find an accompanying sound for.",
     anchor=False,

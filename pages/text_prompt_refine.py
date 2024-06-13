@@ -5,8 +5,8 @@ from pages.shared_survey import query_comparison_form
 from pages.utils import page_setup
 
 page_setup()
-st.title("Refine your query", anchor=False)
-
+num_items_completed = st.session_state['num_items_completed']
+st.title(f"Set {num_items_completed // 3 + 1}: Example {num_items_completed % 3 + 1}", anchor=False)
 if "sound_url2" not in st.session_state:
     sound_url, sound_id, start, end = get_related_sound_for_description(
         st.session_state["stimulus_id"]

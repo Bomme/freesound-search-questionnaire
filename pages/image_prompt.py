@@ -8,7 +8,8 @@ from pages.utils import page_setup, toggle_session_state
 
 page_setup()
 
-st.subheader("How would you search for a sound that matches this image?", anchor=False)
+num_items_completed = st.session_state['num_items_completed']
+st.title(f"Set {num_items_completed // 3 + 1}: Example {num_items_completed % 3 + 1}", anchor=False)
 
 if "stimulus_id" not in st.session_state:
     filename, image, sound_class, sound_id, sound_url = get_single_image()
@@ -19,14 +20,16 @@ if "stimulus_id" not in st.session_state:
     st.session_state["audio_result_id"] = sound_id
     st.session_state["time"] = time.monotonic()
 
-st.image(st.session_state["stimulus"], use_column_width=True)
-
-st.divider()
 st.subheader(
-    "Imagine you are looking for a sound that matches above image. "
+    "Imagine you are looking for a sound that matches below image. "
     "What would you type into the search bar?",
     anchor=False,
 )
+
+st.image(st.session_state["stimulus"], use_column_width=True)
+
+st.divider()
+
 
 query_submitted = st.session_state.get("query1_submitted", False)
 

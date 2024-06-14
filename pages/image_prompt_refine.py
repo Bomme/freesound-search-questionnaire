@@ -15,7 +15,7 @@ st.info(
     icon="✅",
 )
 
-st.image(st.session_state["stimulus"], use_column_width=True)
+st.image(st.session_state["stimulus"], use_column_width=True, caption=st.session_state["license_1"])
 
 st.subheader(
     "2️⃣ Now imagine that the following sound was among the top results, but you do not want it.",
@@ -26,6 +26,8 @@ st.info(
     icon="❌",
 )
 st.audio(st.session_state["sound_url2"], format="audio/mp3")
+if st.session_state["license_2"]:
+    st.caption(st.session_state["license_2"])
 
 st.divider()
 rewrite_instructions = "What would you type into the search bar to find sounds for the image 1️⃣ and avoid sounds like 2️⃣?"

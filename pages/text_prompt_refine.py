@@ -8,13 +8,14 @@ page_setup()
 num_items_completed = st.session_state['num_items_completed']
 st.title(f"Set {num_items_completed // 3 + 1}: Example {num_items_completed % 3 + 1}", anchor=False)
 if "sound_url2" not in st.session_state:
-    sound_url, sound_id, start, end = get_related_sound_for_description(
+    sound_url, sound_id, start, end, license_str = get_related_sound_for_description(
         st.session_state["stimulus_id"]
     )
     st.session_state["sound_url2"] = sound_url
     st.session_state["audio_result_id"] = sound_id
     st.session_state["start"] = start
     st.session_state["end"] = end
+    st.session_state["license_2"] = license_str
 
 st.subheader("1️⃣This is the description of a sound you are looking for.", anchor=False)
 st.info(
@@ -39,6 +40,8 @@ st.audio(
     start_time=st.session_state["start"],
     end_time=st.session_state["end"],
 )
+if st.session_state["license_2"]:
+    st.caption(st.session_state["license_2"])
 
 st.divider()
 

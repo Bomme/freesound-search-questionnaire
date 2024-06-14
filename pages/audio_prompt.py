@@ -12,11 +12,13 @@ num_items_completed = st.session_state['num_items_completed']
 st.title(f"Set {num_items_completed // 3 + 1}: Example {num_items_completed % 3 + 1}", anchor=False)
 
 if "stimulus_id" not in st.session_state:
-    (sound_url1, sound_id1), (sound_url2, sound_id2) = get_sounds_from_same_class()
+    (sound_url1, sound_id1, license_1), (sound_url2, sound_id2, license_2) = get_sounds_from_same_class()
     st.session_state["sound_url1"] = sound_url1
     st.session_state["stimulus_id"] = sound_id1
+    st.session_state["license_1"] = license_1
     st.session_state["sound_url2"] = sound_url2
     st.session_state["audio_result_id"] = sound_id2
+    st.session_state["license_2"] = license_2
     st.session_state["time"] = time.monotonic()
 
 st.subheader(

@@ -12,12 +12,14 @@ num_items_completed = st.session_state['num_items_completed']
 st.title(f"Set {num_items_completed // 3 + 1}: Example {num_items_completed % 3 + 1}", anchor=False)
 
 if "stimulus_id" not in st.session_state:
-    filename, image, sound_class, sound_id, sound_url = get_single_image()
+    filename, image, sound_class, sound_id, sound_url, license_str, sound_license_str = get_single_image()
     st.session_state["stimulus"] = image
     st.session_state["sound_class"] = sound_class
     st.session_state["stimulus_id"] = filename
     st.session_state["sound_url2"] = sound_url
     st.session_state["audio_result_id"] = sound_id
+    st.session_state["license_1"] = license_str
+    st.session_state["license_2"] = sound_license_str
     st.session_state["time"] = time.monotonic()
 
 st.subheader(

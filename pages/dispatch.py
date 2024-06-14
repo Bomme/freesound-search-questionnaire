@@ -65,6 +65,8 @@ def store_results_and_clear_session_state():
         "audio_result_id",
         "sound_class",
         "time",
+        "license_1",
+        "license_2",
     ]:
         if key in st.session_state:
             del st.session_state[key]
